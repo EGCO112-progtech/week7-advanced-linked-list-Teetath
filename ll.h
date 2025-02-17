@@ -77,8 +77,8 @@ int deletes( LLPtr *sPtr, int value )
    if ( value == ( *sPtr )->data ) {
       tempPtr = *sPtr;
       *sPtr = ( *sPtr )->nextPtr;
-      if(tempPtr->pPtr)
-         ( *sPtr )->pPtr = tempPtr->pPtr;
+      if(*sPtr)
+      ( *sPtr )->pPtr = tempPtr->pPtr;
       free( tempPtr );
       return value;
    }
@@ -93,9 +93,9 @@ int deletes( LLPtr *sPtr, int value )
 
       if ( currentPtr != NULL ) {
          tempPtr = currentPtr;
-         previousPtr->nextPtr = currentPtr->nextPtr;
-         if(currentPtr->nextPtr)currentPtr = currentPtr->nextPtr;
-         currentPtr->pPtr = previousPtr;
+         currentPtr = currentPtr->nextPtr;
+         previousPtr->nextPtr = currentPtr;
+         if(currentPtr)currentPtr->pPtr = previousPtr;
          free( tempPtr );
          return value;
       }
